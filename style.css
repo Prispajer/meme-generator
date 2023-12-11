@@ -14,7 +14,7 @@ header {
   height: 80px;
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 header img {
@@ -29,11 +29,18 @@ header h1 {
 }
 
 main {
-  margin: 25px 0 0 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 form {
   display: flex;
+  width: 50%;
+  align-items: flex-start;
   justify-content: space-between;
   margin: 0 20px;
 }
@@ -45,11 +52,28 @@ form p {
 
 input {
   min-height: 35px;
+  width: 80%;
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.3);
   margin: 5px 0 0 0;
   padding: 0 0 0 10px;
   outline: none;
+}
+
+.input-write {
+  width: 50%;
+}
+
+.--left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.--right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 input::placeholder {
@@ -60,7 +84,7 @@ input::placeholder {
 .button-container {
   display: grid;
   place-items: center;
-  margin: 20px;
+  width: 50%;
 }
 
 button {
@@ -70,4 +94,11 @@ button {
   border: none;
   color: #ffffff;
   background: linear-gradient(to right, #711f8d, #a818da);
+  cursor: pointer;
+}
+
+.meme-image {
+  max-height: 500px;
+  min-height: 500px;
+  width: 50%;
 }
