@@ -82,8 +82,6 @@ input::placeholder {
 }
 
 .button-container {
-  display: grid;
-  place-items: center;
   width: 50%;
 }
 
