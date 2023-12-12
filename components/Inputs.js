@@ -14,9 +14,10 @@ const Inputs = () => {
     const arrayOfMemes = allMemeImages.data.memes;
     const randomNumber = Math.floor(Math.random() * arrayOfMemes.length);
     const url = arrayOfMemes[randomNumber].url;
-    setProp((prevImage) => {
+    setProp(() => {
       return {
-        ...prevImage,
+        topText: "",
+        bottomText: "",
         randomImage: url,
       };
     });
@@ -37,7 +38,7 @@ const Inputs = () => {
       <section className="button-container">
         <button onClick={getMemeImage}>Get a new meme image 🖼 </button>
       </section>
-      <img className="meme-image" src={memeImage} alt="random" />
+      <img className="meme-image" src={prop.randomImage} alt="random" />
     </main>
   );
 };
