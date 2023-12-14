@@ -39,7 +39,7 @@ main {
 
 form {
   display: flex;
-  width: 50%;
+  width: 900px;
   align-items: flex-start;
   justify-content: space-between;
   margin: 0 20px;
@@ -82,7 +82,7 @@ input::placeholder {
 }
 
 .button-container {
-  width: 50%;
+  width: 900px;
 }
 
 button {
