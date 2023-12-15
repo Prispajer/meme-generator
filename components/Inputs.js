@@ -8,14 +8,15 @@ const Inputs = () => {
     randomImage: "http://i.imgflip.com/1bij.jpg",
   });
 
-  const [allMemeImages, setAllMemeImage] = React.useState(memesData);
+  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
 
   function getMemeImage() {
     const arrayOfMemes = allMemeImages.data.memes;
     const randomNumber = Math.floor(Math.random() * arrayOfMemes.length);
     const url = arrayOfMemes[randomNumber].url;
-    setProp(() => {
+    setProp((prevProp) => {
       return {
+        ...prevProp,
         topText: "",
         bottomText: "",
         randomImage: url,
@@ -23,22 +24,46 @@ const Inputs = () => {
     });
   }
 
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setProp((prevProp) => ({
+      ...prevProp,
+      [name]: value,
+    }));
+  }
+
   return (
     <main>
       <form>
-        <section className="input-write --left">
+        <section>
           <p>Top text</p>
-          <input type="text" placeholder="Write something" />
+          <input
+            type="text"
+            placeholder="Write something"
+            name="topText"
+            value={prop.topText}
+            onChange={handleChange}
+          />
         </section>
-        <section className="input-write --right">
+        <section>
           <p>Bottom text</p>
-          <input type="text" placeholder="Write something" />
+          <input
+            type="text"
+            placeholder="Write something"
+            name="bottomText"
+            value={prop.bottomText}
+            onChange={handleChange}
+          />
         </section>
       </form>
-      <section className="button-container">
-        <button onClick={getMemeImage}>Get a new meme image 🖼 </button>
+      <section>
+        <button onClick={getMemeImage}>Get a new meme image 🖼</button>
       </section>
-      <img className="meme-image" src={prop.randomImage} alt="random" />
+      <div className="meme">
+        <img src={prop.randomImage} className="meme--image" alt="Meme" />
+        <h2 className="meme--text top">{prop.topText}</h2>
+        <h2 className="meme--text bottom">{prop.bottomText}</h2>
+      </div>
     </main>
   );
 };

@@ -29,20 +29,13 @@ header h1 {
 }
 
 main {
-  width: 100%;
-  height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  padding: 36px;
 }
 
 form {
-  display: flex;
-  width: 900px;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin: 0 20px;
+  display: grid;
+  grid-template: 40px 40px/ 1fr 1fr;
+  gap: 20px;
 }
 
 form p {
@@ -52,7 +45,7 @@ form p {
 
 input {
   min-height: 35px;
-  width: 80%;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.3);
   margin: 5px 0 0 0;
@@ -60,29 +53,9 @@ input {
   outline: none;
 }
 
-.input-write {
-  width: 50%;
-}
-
-.--left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.--right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
 input::placeholder {
   color: rgba(128, 128, 128, 0.5);
   font-size: 14px;
-}
-
-.button-container {
-  width: 900px;
 }
 
 button {
@@ -95,8 +68,38 @@ button {
   cursor: pointer;
 }
 
-.meme-image {
-  max-height: 500px;
-  min-height: 500px;
-  width: 50%;
+.meme {
+  margin: 20px auto;
+  max-width: 80%;
+}
+
+.meme img {
+  width: 100%;
+  height: 800px;
+}
+
+.meme--text {
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 15px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.top {
+  top: 0;
 }
