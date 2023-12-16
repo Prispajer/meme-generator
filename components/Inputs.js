@@ -15,15 +15,19 @@ const Inputs = () => {
     const randomNumber = Math.floor(Math.random() * arrayOfMemes.length);
     const url = arrayOfMemes[randomNumber].url;
     setProp((prevProp) => {
-      return Object.assign({}, prevProp, { randomImage: url });
+      return {
+        ...prevProp,
+        randomImage: url,
+      };
     });
   }
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setProp((prevProp) => {
-      return Object.assign({}, prevProp, { [name]: value });
-    });
+    setProp((prevProp) => ({
+      ...prevProp,
+      [name]: value,
+    }));
   }
 
   return (
