@@ -10,6 +10,15 @@ const Inputs = () => {
 
   const [allMemeImages, setAllMemeImages] = React.useState(memesData);
 
+  React.useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((data) => setAllMemeImages(data.data.memes))
+      .catch((error) =>
+        console.log(error, "Zapytanie do API nie powiodło się")
+      );
+  });
+
   function getMemeImage() {
     const arrayOfMemes = allMemeImages.data.memes;
     const randomNumber = Math.floor(Math.random() * arrayOfMemes.length);
