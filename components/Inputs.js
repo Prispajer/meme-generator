@@ -1,5 +1,4 @@
 import React from "react";
-import memesData from "../memesData";
 
 const Inputs = () => {
   const [prop, setProp] = React.useState({
@@ -8,7 +7,7 @@ const Inputs = () => {
     randomImage: "http://i.imgflip.com/1bij.jpg",
   });
 
-  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
+  const [allMemeImages, setAllMemeImages] = React.useState([]);
 
   React.useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
@@ -20,23 +19,18 @@ const Inputs = () => {
   });
 
   function getMemeImage() {
-    const arrayOfMemes = allMemeImages.data.memes;
-    const randomNumber = Math.floor(Math.random() * arrayOfMemes.length);
-    const url = arrayOfMemes[randomNumber].url;
+    const randomNumber = Math.floor(Math.random() * allMemeImages.length);
+    const url = allMemeImages[randomNumber].url;
     setProp((prevProp) => {
-      return {
-        ...prevProp,
-        randomImage: url,
-      };
+      return Object.assign({}, prevProp, { randomImage: url });
     });
   }
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setProp((prevProp) => ({
-      ...prevProp,
-      [name]: value,
-    }));
+    setProp((prevProp) => {
+      return Object.assign({}, prevProp, { [name]: value });
+    });
   }
 
   return (
